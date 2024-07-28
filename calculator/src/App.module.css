@@ -1,7 +1,7 @@
 .app {
     height: 550px;
     width: 660px;
-    background-color: #8090b1;
+    background-color: #989faf;
     border: rgb(82, 63, 192) 5px solid;
     border-radius: 10px;
 }
@@ -36,7 +36,7 @@
     width: 100px;
     background-color: #8090b1;
     border: #d9dbe0 5px solid;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 30px;
 }
 .numpad:hover {
@@ -49,7 +49,7 @@
     width: 210px;
     background-color: #8090b1;
     border: #d9dbe0 5px solid;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 30px;
 }
 .numpad-equally:hover {
@@ -63,7 +63,7 @@
     width: 210px;
     background-color: #8090b1;
     border: #d9dbe0 5px solid;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 30px;
 }
 .numpad-delete:hover {

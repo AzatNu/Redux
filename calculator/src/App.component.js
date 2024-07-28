@@ -38,10 +38,10 @@ export const App = () => {
         }
         setIsEqually(true);
     };
-    let disp = `${firstOperand}${operator}${secondOperand}`.slice(0, 10);
+    let disp = `${firstOperand}${operator}${secondOperand}`.slice(0, 15);
     return (
         <>
-            {secondOperand === `0` ? (
+            {secondOperand === `0` && operator === `/` ? (
                 <h2 className={styel["error"]}>
                     Ошибка. Деление на ноль невозможно
                 </h2>
@@ -58,7 +58,7 @@ export const App = () => {
                     )}
                     {isEqually && (
                         <p className={styel["answer"]}>
-                            = {Math.floor(answer)}
+                            = {answer.toString().slice(0, 15)}
                         </p>
                     )}
                 </div>
@@ -81,7 +81,6 @@ export const App = () => {
                     <button className={styel["numpad"]} onClick={plusButton}>
                         +
                     </button>
-
                     <button
                         className={styel["numpad-equally"]}
                         onClick={result}
