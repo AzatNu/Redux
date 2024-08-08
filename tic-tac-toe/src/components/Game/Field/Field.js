@@ -29,6 +29,7 @@ export const Field = ({
                 field[pattern[1]] === field[pattern[2]]
             ) {
                 setIsGameEnded(true);
+                setCurrentPlayer(field[pattern[1]]);
             }
         });
         if (field.every((item) => item !== ``)) {
@@ -37,17 +38,17 @@ export const Field = ({
     };
 
     const makeAction = (index) => {
-        if (isGameEnded || isDraw) {
-            return;
-        } else {
+        if (!isGameEnded && !isDraw && field[index] === ``) {
             field[index] = currentPlayer;
             setField([...field]);
+            if (currentPlayer === `X`) {
+                setCurrentPlayer(`O`);
+            } else {
+                setCurrentPlayer(`X`);
+            }
             checkWin();
-            setCurrentPlayer(currentPlayer === `X` ? `O` : `X`);
         }
     };
-
-    const chageWalker = () => {};
 
     return (
         <FieldLayout
@@ -60,12 +61,18 @@ export const Field = ({
             setIsGameEnded={setIsGameEnded}
             setIsDraw={setIsDraw}
             makeAction={makeAction}
-            checkWin={checkWin}
-            chageWalker={chageWalker}
         />
     );
 };
 
 Field.propTypes = {
     field: PropTypes.arrayOf(PropTypes.string).isRequired,
+    makeAction: PropTypes.func.isRequired,
+    isGameEnded: PropTypes.bool.isRequired,
+    isDraw: PropTypes.bool.isRequired,
+    currentPlayer: PropTypes.string.isRequired,
+    setField: PropTypes.func.isRequired,
+    setCurrentPlayer: PropTypes.func.isRequired,
+    setIsGameEnded: PropTypes.func.isRequired,
+    setIsDraw: PropTypes.func.isRequired,
 };

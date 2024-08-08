@@ -11,11 +11,8 @@ export const FieldLayout = ({ field, makeAction }) => {
                             ? style[`Field__row`]
                             : style[`Field__row_occupied`]
                     }
+                    disbled={item === `` ? false : true}
                     onClick={item === `` ? () => makeAction(index) : null}
-                    style={{
-                        pointerEvents: item !== `` ? `none` : `auto`,
-                        cursor: item !== `` ? `default` : `pointer`,
-                    }}
                 >
                     {item}
                 </div>
