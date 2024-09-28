@@ -1,12 +1,25 @@
-import styel from "./information.module.css";
-export const InformationLayout = ({ currentPlayer, isGameEnded, isDraw }) => {
-  return (
-    <div className={styel[`information`]}>
-      {isDraw
-        ? "Ничья"
-        : isGameEnded
-        ? `Победил игрок: ${currentPlayer}`
-        : `Ходит игрок: ${currentPlayer}`}
-    </div>
-  );
+import React, { useState, useEffect } from "react";
+import style from "./information.module.css";
+import { store } from "../store";
+
+export const InformationLayout = () => {
+    const [state, setState] = useState(store.getState());
+
+    useEffect(() => {
+        const unsubscribe = store.subscribe(() => setState(store.getState()));
+
+        return () => unsubscribe();
+    }, []);
+
+    const { currentPlayer, isGameEnded, isDraw, winner } = state;
+
+    return (
+        <div className={style.information}>
+            {isGameEnded
+                ? `Победитель: ${winner}`
+                : isDraw
+                ? `Ничья`
+                : `Ход: ${currentPlayer}`}
+        </div>
+    );
 };
